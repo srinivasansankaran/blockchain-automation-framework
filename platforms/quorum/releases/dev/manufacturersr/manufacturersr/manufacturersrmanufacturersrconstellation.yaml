@@ -1,0 +1,68 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: manufacturersrmanufacturersrconstellation
+  namespace: manufacturersr-quo
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: manufacturersrmanufacturersrconstellation
+  helmVersion: v3
+  chart:
+    git: ssh://git@github.com/srinivasansankaran/blockchain-automation-framework.git
+    ref: develop
+    path: platforms/quorum/charts/node_constellation
+  values:
+    replicaCount: 1
+    metadata:
+      namespace: manufacturersr-quo
+      labels: 
+    images:
+      node: quorumengineering/quorum:2.5.0
+      alpineutils: index.docker.io/hyperledgerlabs/alpine-utils:1.0
+      constellation: quorumengineering/constellation:0.3.2
+    node:
+      name: manufacturersr
+      status: default
+      consensus: ibft
+      subject: O=Manufacturer,OU=Manufacturer,L=47.38/8.54/Zurich,C=CH
+      mountPath: /etc/quorum/qdata
+      imagepullsecret: regcred
+      keystore: keystore_1
+      servicetype: ClusterIP
+      lock: true/false
+      ports:
+        rpc: 8546
+        raft: 50401
+        constellation: 9001
+        quorum: 21000
+    vault:
+      address: http://vault.internal.dev2.aws.blockchaincloudpoc-develop.com:20001
+      secretprefix: secret/manufacturersr-quo/crypto/manufacturersr
+      serviceaccountname: vault-auth
+      keyname: quorum
+      tm_keyname: transaction
+      role: vault-role
+      authpath: quorummanufacturersr
+    genesis: ewogICAgImNvbmZpZyI6IHsKICAgICAgICAiY2hhaW5JZCI6IDEwLAogICAgICAgICJob21lc3RlYWRCbG9jayI6IDAsCiAgICAgICAgImVpcDE1MEJsb2NrIjogMCwKICAgICAgICAiZWlwMTUwSGFzaCI6ICIweDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLAogICAgICAgICJlaXAxNTVCbG9jayI6IDAsCiAgICAgICAgImVpcDE1OEJsb2NrIjogMCwKICAgICAgICAiYnl6YW50aXVtQmxvY2siOiAxLAogICAgICAgICJjb25zdGFudGlub3BsZUJsb2NrIjogMCwKICAgICAgICAiaXN0YW5idWwiOiB7CiAgICAgICAgICAgICJlcG9jaCI6IDMwMDAwLAogICAgICAgICAgICAicG9saWN5IjogMCwKICAgICAgICAgICAgImNlaWwyTmJ5M0Jsb2NrIjogMAogICAgICAgIH0sCiAgICAgICAgInR4blNpemVMaW1pdCI6IDEyOCwKICAgICAgICAibWF4Q29kZVNpemUiOiAxMjgsCiAgICAgICAgImlzUXVvcnVtIjogdHJ1ZQogICAgfSwKICAgICJub25jZSI6ICIweDAiLAogICAgInRpbWVzdGFtcCI6ICIweDVmYjUwOWE2IiwKICAgICJleHRyYURhdGEiOiAiMHgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwZjg2ZmVhOTRiYjg3YjhkODZlZDMwZmVmNjYyZTU2ODg0NTM1MTEwMWZkOGE4YzFlOTQzOWMzOTQxMjJjZmFiN2ZiZmMwZjE0YmM2OWM2MmY1NjkyOTY2NDNmYjg0MTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBjMCIsCiAgICAiZ2FzTGltaXQiOiAiMHhlMDAwMDAwMCIsCiAgICAiZGlmZmljdWx0eSI6ICIweDEiLAogICAgIm1peEhhc2giOiAiMHg2Mzc0Njk2MzYxNmMyMDYyNzk3YTYxNmU3NDY5NmU2NTIwNjY2MTc1NmM3NDIwNzQ2ZjZjNjU3MjYxNmU2MzY1IiwKICAgICJjb2luYmFzZSI6ICIweDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLAogICAgImFsbG9jIjogewogICAgICAgICIzOWMzOTQxMjJjZmFiN2ZiZmMwZjE0YmM2OWM2MmY1NjkyOTY2NDNmIjogewogICAgICAgICAgICAiYmFsYW5jZSI6ICIweDQ0NmMzYjE1Zjk5MjY2ODdkMmM0MDUzNGZkYjU2NDAwMDAwMDAwMDAwMCIKICAgICAgICB9LAogICAgICAgICJiYjg3YjhkODZlZDMwZmVmNjYyZTU2ODg0NTM1MTEwMWZkOGE4YzFlIjogewogICAgICAgICAgICAiYmFsYW5jZSI6ICIweDQ0NmMzYjE1Zjk5MjY2ODdkMmM0MDUzNGZkYjU2NDAwMDAwMDAwMDAwMCIKICAgICAgICB9CiAgICB9LAogICAgIm51bWJlciI6ICIweDAiLAogICAgImdhc1VzZWQiOiAiMHgwIiwKICAgICJwYXJlbnRIYXNoIjogIjB4MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIKfQ==
+    staticnodes: 
+      [
+    "enode://e579e002f921d388fb2894e443ee763b4f738bce206e0338cc9de417a1ebbfafc2f0634a463e15f3aaa36b54329bdb5bb1765cb3766af8557feade8c942c1380@carriersr.rc.dev2.aws.blockchaincloudpoc-develop.com:15210?discport=0",
+    "enode://34a716e72a9113152245a3cc4d9fcd81c16117368d95d5b6e4774ee5f80f20ad74fb5c9c595badcc4c9ff5b5afe8286abc2a99dbaea240cb11f6711f63607052@manufacturersr.rc.dev2.aws.blockchaincloudpoc-develop.com:15220?discport=0"
+]
+    constellation:
+      url: https://manufacturersr.rc.dev2.aws.blockchaincloudpoc-develop.com:15022/
+      storage: "bdb:/etc/quorum/qdata/database"
+      tls: "strict"
+      othernodes: http://carriersr.rc.dev2.aws.blockchaincloudpoc-develop.com:15012/
+      trust: "tofu"
+    proxy:
+      provider: "ambassador"
+      external_url_suffix: rc.dev2.aws.blockchaincloudpoc-develop.com
+      rpcport: 15221
+      quorumport: 15220
+      portConst: 15022
+      portRaft: 15223
+    storage:
+      storageclassname: awsstorageclass
+      storagesize: 1Gi
