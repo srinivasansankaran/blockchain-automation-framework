@@ -5,6 +5,7 @@ const {productContract, fromAddress, fromNodeSubject} = require('../web3services
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
 var bodyParser = require('body-parser');
+var Protocol = process.env['Protocol'];
 
 router.use(bodyParser.json()); // for parsing application/json
 
@@ -35,7 +36,10 @@ router.get("/:trackingID?", function(req, res) {
           container.custodian = newContainer.custodian;
           container.custodian = container.custodian + "," + newContainer.lastScannedAt;
           container.trackingID = newContainer.trackingID;
-          container.timestamp  = (new Date(newContainer.timestamp * 1000)).getTime();
+          if(Protocol==="raft")
+            container.timestamp  = (new Date(newContainer.timestamp/1000000)).getTime();
+          else
+            container.timestamp  = (new Date(newContainer.timestamp*1000)).getTime();          
           container.containerID = newContainer.containerID;
           container.linearId = {};
           container.linearId.externalId = null;
@@ -80,7 +84,10 @@ router.get("/:trackingID?", function(req, res) {
           container.custodian = container.custodian + "," + toPush.lastScannedAt;
           container.lastScannedAt = toPush.lastScannedAt;
           container.trackingID = toPush.trackingID;
-          container.timestamp  = (new Date(toPush.timestamp * 1000)).getTime();
+          if(Protocol==="raft")
+            container.timestamp  = (new Date(newContainer.timestamp/1000000)).getTime();
+          else
+            container.timestamp  = (new Date(newContainer.timestamp*1000)).getTime(); 
           container.containerID = toPush.containerID;
           container.linearId = {};
           container.linearId.externalId = null;

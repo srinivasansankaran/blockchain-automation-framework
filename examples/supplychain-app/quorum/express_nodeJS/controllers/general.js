@@ -5,6 +5,7 @@ const {productContract, fromAddress, fromNodeOrganization, fromNodeOrganizationU
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
 var bodyParser = require('body-parser');
+var Protocol = process.env['Protocol'];
 
 router.use(bodyParser.json()); // for parsing application/json
 
@@ -55,7 +56,10 @@ router.get('/:trackingID/history', function (req, res) {
           var history = {};
           history.party = toPush.custodian;
           history.party = history.party+","+toPush.lastScannedAt;
-          history.time  = (new Date(toPush.timestamp * 1000)).getTime();
+          if(Protocol==="raft")
+            history.time  = (new Date(toPush.timestamp/1000000)).getTime();
+          else
+            history.time  = (new Date(toPush.timestamp * 1000)).getTime(); 
           history.location = toPush.lastScannedAt;
           allTransaction.push(history);
     }
