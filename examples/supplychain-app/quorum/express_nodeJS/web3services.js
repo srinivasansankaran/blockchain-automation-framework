@@ -1,6 +1,6 @@
 var Web3 = require("web3");
 var {productABI} = require("./ABI/productABI");
-var {productContractAddress,quorumServer, ganacheServer, nodeIdentity, nodeOrganization, nodeOrganizationUnit, nodeSubject} = require("./config");
+var {productContractAddress,quorumServer, ganacheServer, nodeIdentity, nodeOrganization, nodeOrganizationUnit, nodeSubject,protocol} = require("./config");
 
 // Smart contract address
 const fromAddress = nodeIdentity;
@@ -16,6 +16,9 @@ const fromNodeSubject = nodeSubject;
 console.log(fromNodeSubject);
 console.log(fromAddress+","+fromNodeSubject);
 
+const Protocol = protocol;
+console.log(Protocol);
+
 web3 = new Web3(new Web3.providers.HttpProvider(ganacheServer));
 
 //instantiate the product smartcontract 
@@ -26,5 +29,6 @@ module.exports = {
     fromAddress,
     fromNodeOrganization,
     fromNodeOrganizationUnit,
-    fromNodeSubject
+    fromNodeSubject,
+    Protocol
 }

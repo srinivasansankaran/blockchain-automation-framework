@@ -1,11 +1,10 @@
 var express = require('express')
   , router = express.Router();
 
-const { productContract, fromAddress, fromNodeSubject } = require('../web3services');
+const { productContract, fromAddress, fromNodeSubject,Protocol } = require('../web3services');
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
 var bodyParser = require('body-parser');
-var Protocol = process.env['Protocol'];
 
 router.use(bodyParser.json()); // for parsing application/json
 
