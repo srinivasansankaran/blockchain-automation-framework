@@ -1,0 +1,48 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: carriersr-expressapi
+  namespace: carriersr-quo
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  chart:
+    path: examples/supplychain-app/charts/expressapp-quorum
+    git: "ssh://git@github.com/srinivasansankaran/blockchain-automation-framework.git"
+    ref: "develop"
+  releaseName: carriersrquorum-expressapi
+  values:
+    nodeName: carriersr-expressapi
+    metadata:
+      namespace: carriersr-quo
+    replicaCount: 1
+    vault:
+      address: http://vault.internal.dev2.aws.blockchaincloudpoc-develop.com:20001
+      secretprefix: secret/carriersr-quo/smartContracts
+      serviceaccountname: vault-auth
+      keyname: General
+      role: vault-role
+      authpath: quorumcarriersr
+    images:
+      alpineutils: index.docker.io/hyperledgerlabs/alpine-utils:1.0
+    expressapp:
+      serviceType: ClusterIP
+      image: index.docker.io/hyperledgerlabs/supplychain_quorum:express_app_latest
+      pullPolicy: Always
+      pullSecrets: regcred
+      nodePorts:
+        port: 3000
+        targetPort: 3000
+        name: tcp
+      env:
+        geth_address: http://carriersr.rc.dev2.aws.blockchaincloudpoc-develop.com:15211
+        node_subject: O=Carrier,OU=Carrier,L=51.50/-0.13/London,C=GB
+        node_organization: carriersr
+        node_organization_unit: carriersr
+        protocol: raft
+    proxy:
+      provider: ambassador
+      name: carriersr
+      type: quorum
+      external_url_suffix: rc.dev2.aws.blockchaincloudpoc-develop.com
+      peer_name: carriersr
