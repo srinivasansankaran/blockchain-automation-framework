@@ -37,8 +37,7 @@ router.get("/:trackingID?", function(req, res) {
           container.custodian = newContainer.custodian;
           container.custodian = container.custodian + "," + newContainer.lastScannedAt;
           container.trackingID = newContainer.trackingID;
-          const Protocol = require('../web3services');
-          console.log("inside if")
+          console.log(Protocol,"***inside if**");
           console.log("cons inside container=",Protocol)
           if(Protocol==="raft")
             container.timestamp  = (new Date(newContainer.timestamp/1000000)).getTime();
