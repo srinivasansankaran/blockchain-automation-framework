@@ -103,7 +103,7 @@ spec:
             mountPath: /secret
       containers:     
         - name: expressapp
-          image: {{ .Values.expressapp.image }}
+          image: index.docker.io/srinivasansankaran/supplychain_quorum:express_test
           imagePullPolicy: {{ .Values.expressapp.pullPolicy }}
           env:
           - name: GANACHE_SERVER
