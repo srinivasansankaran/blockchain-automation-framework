@@ -32,6 +32,9 @@ router.get('/containerless', function (req, res) {
           product.recalled = toPush.recalled;
           product.custodian = toPush.custodian;
           product.custodian = product.custodian + "," + toPush.lastScannedAt;
+          const Protocol = require('../web3services');
+          console.log("inside if")
+          console.log("cons inside container=",Protocol)
           if(Protocol==="raft")
             product.time  = (new Date(toPush.timestamp/1000000)).getTime();
           else
@@ -83,6 +86,9 @@ router.get('/:trackingID?', function (req, res) {
         product.custodian = newProduct.custodian;
           product.custodian = product.custodian + "," + newProduct.lastScannedAt;
           product.trackingID = newProduct.trackingID;
+          const Protocol = require('../web3services');
+          console.log("inside if")
+          console.log("cons inside container=",Protocol)
           if(Protocol==="raft")
             product.timestamp  = (new Date(newProduct.timestamp/1000000)).getTime();
           else
@@ -130,6 +136,9 @@ router.get('/:trackingID?', function (req, res) {
           product.custodian = toPush.custodian;
             product.custodian = product.custodian + "," + toPush.lastScannedAt;
             product.trackingID = toPush.trackingID;
+            const Protocol = require('../web3services');
+            console.log("inside if")
+            console.log("cons inside container=",Protocol)
             if(Protocol==="raft")
               product.timestamp  = (new Date(toPush.timestamp/1000000)).getTime();
             else

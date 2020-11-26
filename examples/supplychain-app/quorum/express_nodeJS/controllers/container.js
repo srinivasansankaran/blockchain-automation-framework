@@ -16,6 +16,7 @@ router.get("/:trackingID?", function(req, res) {
     // TODO: Implement getContainerByID functionality
     const trackingID = req.params.trackingID;
     console.log(trackingID, "***");
+    console.log(Protocol,"*******");
     productContract.methods
       .getSingleContainer(req.params.trackingID)
       .call({ from: fromAddress, gas: 6721975, gasPrice: "0" })
@@ -36,6 +37,8 @@ router.get("/:trackingID?", function(req, res) {
           container.custodian = newContainer.custodian;
           container.custodian = container.custodian + "," + newContainer.lastScannedAt;
           container.trackingID = newContainer.trackingID;
+          const Protocol = require('../web3services');
+          console.log("inside if")
           console.log("cons inside container=",Protocol)
           if(Protocol==="raft")
             container.timestamp  = (new Date(newContainer.timestamp/1000000)).getTime();
@@ -86,11 +89,12 @@ router.get("/:trackingID?", function(req, res) {
           container.custodian = container.custodian + "," + toPush.lastScannedAt;
           container.lastScannedAt = toPush.lastScannedAt;
           container.trackingID = toPush.trackingID;
+           console.log("inside else")
           console.log("cons inside container=",Protocol)
           if(Protocol==="raft")
-            container.timestamp  = (new Date(newContainer.timestamp/1000000)).getTime();
+            container.timestamp  = (new Date(toPush.timestamp/1000000)).getTime();
           else
-            container.timestamp  = (new Date(newContainer.timestamp*1000)).getTime(); 
+            container.timestamp  = (new Date(toPush.timestamp*1000)).getTime(); 
           container.containerID = toPush.containerID;
           container.linearId = {};
           container.linearId.externalId = null;
