@@ -37,13 +37,11 @@ router.get("/:trackingID?", function(req, res) {
           container.custodian = newContainer.custodian;
           container.custodian = container.custodian + "," + newContainer.lastScannedAt;
           container.trackingID = newContainer.trackingID;
-          console.log(Protocol,"***inside if**");
-          console.log("cons inside container=",Protocol)
+          console.log(Protocol,"*****");
           if(Protocol==="raft")
             container.timestamp  = (new Date(newContainer.timestamp/1000000)).getTime();
           else
-            container.timestamp  = (new Date(newContainer.timestamp*1000)).getTime();   
-          console.log("container.timestamp=",container.timestamp)       
+            container.timestamp  = (new Date(newContainer.timestamp*1000)).getTime();     
           container.containerID = newContainer.containerID;
           container.linearId = {};
           container.linearId.externalId = null;
@@ -88,8 +86,6 @@ router.get("/:trackingID?", function(req, res) {
           container.custodian = container.custodian + "," + toPush.lastScannedAt;
           container.lastScannedAt = toPush.lastScannedAt;
           container.trackingID = toPush.trackingID;
-           console.log("inside else")
-          console.log("cons inside container=",Protocol)
           if(Protocol==="raft")
             container.timestamp  = (new Date(toPush.timestamp/1000000)).getTime();
           else
