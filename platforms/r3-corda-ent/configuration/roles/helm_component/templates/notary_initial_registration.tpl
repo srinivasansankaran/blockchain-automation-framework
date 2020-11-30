@@ -21,6 +21,9 @@ spec:
       nodeContainerName: {{ network.docker.url}}/{{ docker_image }}
       imagePullSecret: regcred
       pullPolicy: Always
+    truststorePassword: password
+    keystorePassword: password
+    acceptLicence: true
     vault:
       address: {{ org.vault.url }}
       certSecretPrefix: {{ org.vault.secret_path | default('secret') }}/{{ org.name | lower }}
