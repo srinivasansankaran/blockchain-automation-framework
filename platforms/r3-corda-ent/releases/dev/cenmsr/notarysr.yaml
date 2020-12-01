@@ -17,7 +17,7 @@ spec:
       namespace: cenmsr-ent
     image:
       initContainerName: adopblockchaincloud0502.azurecr.io/alpine-utils:1.0
-      nodeContainerName: adopblockchaincloud0502.azurecr.io/corda/enterprise-notary:4.4-zulu-openjdk8u242
+      nodeContainerName: adopblockchaincloud0502.azurecr.io/corda/enterprise-node:4.4
       imagePullSecret: regcred
       pullPolicy: Always
       privateCertificate: true
