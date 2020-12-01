@@ -259,6 +259,15 @@ spec:
                 echo
             fi
             sleep ${HOW_LONG}
+            echo
+            
+            # Get the nodeInfo file name and store it in a variable
+            nodeInfoFile=$(basename $(ls additional-node-infos/nodeInfo*))
+            export nodeInfoFile
+            envsubst <<"EOF" > additional-node-infos/network-parameters-initial.conf.tmp
+            EOF
+            mv additional-node-infos/network-parameters-initial.conf.tmp additional-node-infos/network-parameters-initial.conf
+            echo "Created the network-parameters-initial.conf file"
             touch ${BASE_DIR}/certificates/done.txt
           volumeMounts:
           - name: notary-etc
