@@ -209,8 +209,8 @@ spec:
             export KEYSTORE_PASSWORD=$(cat {{ $.Values.nodeConf.volume.baseDir }}/DATA/keystore/ks)
             sed -i -e "s*KEYSTORE_PASSWORD*${KEYSTORE_PASSWORD}*g" etc/notary.conf
             rm -r ${BASE_DIR}/certificates/done.txt
-            yes | keytool -importcert -file {{ $.Values.nodeConf.volume.baseDir }}/DATA/tlscerts/networkmap.crt -storepass changeit -alias {{ .Values.networkServices.networkMapDomain }} -keystore /usr/lib/jvm/zulu-8-amd64/jre/lib/security/cacerts
-            yes | keytool -importcert -file {{ $.Values.nodeConf.volume.baseDir }}/DATA/tlscerts/idman.crt -storepass changeit -alias {{ .Values.networkServices.idmanDomain }} -keystore /usr/lib/jvm/zulu-8-amd64/jre/lib/security/cacerts
+            yes | keytool -importcert -file DATA/tlscerts/networkmap.crt -storepass changeit -alias {{ .Values.networkServices.networkMapDomain }} -keystore /usr/lib/jvm/zulu8.33.0.1-jdk8.0.192-linux_musl_x64/jre/lib/security/cacerts
+            yes | keytool -importcert -file DATA/tlscerts/idman.crt -storepass changeit -alias {{ .Values.networkServices.idmanDomain }} -keystore /usr/lib/jvm/zulu8.33.0.1-jdk8.0.192-linux_musl_x64/jre/lib/security/cacerts
             
             
             

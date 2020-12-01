@@ -21,9 +21,7 @@ spec:
       nodeContainerName: {{ network.docker.url}}/{{ docker_image }}
       imagePullSecret: regcred
       pullPolicy: Always
-    truststorePassword: password
-    keystorePassword: password
-    acceptLicence: true
+      privateCertificate: true
     vault:
       address: {{ org.vault.url }}
       certSecretPrefix: {{ org.vault.secret_path | default('secret') }}/{{ org.name | lower }}
@@ -78,7 +76,6 @@ spec:
       cordaJar:
         memorySize: 1524
         unit: M
-      crlCheckSoftFail: true
       volume:
         baseDir: /opt/corda
       pod:
