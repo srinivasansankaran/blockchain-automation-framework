@@ -258,13 +258,24 @@ spec:
                 echo "Notary initial registration: no errors - sleeping for requested ${HOW_LONG} seconds before disappearing."
                 echo
             fi
+            
             sleep ${HOW_LONG}
             echo
             
             # Get the nodeInfo file name and store it in a variable
             nodeInfoFile=$(basename $(ls additional-node-infos/nodeInfo*))
             export nodeInfoFile
-            envsubst <<"EOF" > additional-node-infos/network-parameters-initial.conf.tmp
+            cat <<EOF > additional-node-infos/network-parameters-initial.conf.tmp
+            notaries : [
+              {
+                notaryNodeInfoFile: "notary-nodeinfo/${nodeInfoFile}"
+                validating = "{{ .Values.nodeConf.notary.validating }}"
+              }
+            ]
+            minimumPlatformVersion = 1
+            maxMessageSize = 10485760
+            maxTransactionSize = 10485760
+            eventHorizonDays = 1
             EOF
             mv additional-node-infos/network-parameters-initial.conf.tmp additional-node-infos/network-parameters-initial.conf
             echo "Created the network-parameters-initial.conf file"
