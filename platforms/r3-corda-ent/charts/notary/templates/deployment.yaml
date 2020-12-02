@@ -217,7 +217,7 @@ spec:
         - |-
           # crearting cordapps dir in volume to keep jars
           {{- if .Values.cordapps.getcordapps }}
-            mkdir -p ${BASE_DIR}/cordapps
+            mkdir -p -m775 ${BASE_DIR}/cordapps
             mkdir -p /tmp/downloaded-jars
             # setting up env to get secrets from vault
             KUBE_SA_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
