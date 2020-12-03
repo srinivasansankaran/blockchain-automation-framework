@@ -1,7 +1,7 @@
 var express = require('express')
   , router = express.Router();
 
-const { productContract, fromAddress, fromNodeSubject,Protocol } = require('../web3services');
+const { productContract, fromAddress, fromNodeSubject,protocol } = require('../web3services');
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
 var bodyParser = require('body-parser');
@@ -32,7 +32,7 @@ router.get('/containerless', function (req, res) {
           product.recalled = toPush.recalled;
           product.custodian = toPush.custodian;
           product.custodian = product.custodian + "," + toPush.lastScannedAt;
-          if(Protocol==="raft")
+          if(protocol==="raft")
             product.time  = (new Date(toPush.timestamp/1000000)).getTime();
           else
             product.time  = (new Date(toPush.timestamp * 1000)).getTime();
@@ -83,7 +83,7 @@ router.get('/:trackingID?', function (req, res) {
         product.custodian = newProduct.custodian;
           product.custodian = product.custodian + "," + newProduct.lastScannedAt;
           product.trackingID = newProduct.trackingID;
-          if(Protocol==="raft")
+          if(protocol==="raft")
             product.timestamp  = (new Date(newProduct.timestamp/1000000)).getTime();
           else
             product.timestamp  = (new Date(newProduct.timestamp * 1000)).getTime();
@@ -130,7 +130,7 @@ router.get('/:trackingID?', function (req, res) {
           product.custodian = toPush.custodian;
             product.custodian = product.custodian + "," + toPush.lastScannedAt;
             product.trackingID = toPush.trackingID;
-            if(Protocol==="raft")
+            if(protocol==="raft")
               product.timestamp  = (new Date(toPush.timestamp/1000000)).getTime();
             else
               product.timestamp  = (new Date(toPush.timestamp * 1000)).getTime();

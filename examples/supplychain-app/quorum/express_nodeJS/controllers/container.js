@@ -1,7 +1,7 @@
 var express = require('express')
   , router = express.Router();
 
-const {productContract, fromAddress, fromNodeSubject,Protocol} = require('../web3services');
+const {productContract, fromAddress, fromNodeSubject,protocol} = require('../web3services');
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
 var bodyParser = require('body-parser');
@@ -37,8 +37,8 @@ router.get("/:trackingID?", function(req, res) {
           container.custodian = newContainer.custodian;
           container.custodian = container.custodian + "," + newContainer.lastScannedAt;
           container.trackingID = newContainer.trackingID;
-          console.log(Protocol,"*****");
-          if(Protocol==="raft")
+          console.log(protocol,"*****");
+          if(protocol==="raft")
             container.timestamp  = (new Date(newContainer.timestamp/1000000)).getTime();
           else
             container.timestamp  = (new Date(newContainer.timestamp*1000)).getTime();     
@@ -86,7 +86,7 @@ router.get("/:trackingID?", function(req, res) {
           container.custodian = container.custodian + "," + toPush.lastScannedAt;
           container.lastScannedAt = toPush.lastScannedAt;
           container.trackingID = toPush.trackingID;
-          if(Protocol==="raft")
+          if(protocol==="raft")
             container.timestamp  = (new Date(toPush.timestamp/1000000)).getTime();
           else
             container.timestamp  = (new Date(toPush.timestamp*1000)).getTime(); 
