@@ -16,8 +16,8 @@ spec:
     metadata:
       namespace: cenmsr-ent
     image:
-      initContainerName: index.docker.io/hyperledgerlabs/alpine-utils:1.0
-      pkiContainerName: index.docker.io/hyperledgerlabs/corda/enterprise-pki:1.2-zulu-openjdk8u242
+      initContainerName: adopblockchaincloud0502.azurecr.io/alpine-utils:1.0
+      pkiContainerName: adopblockchaincloud0502.azurecr.io/corda/enterprise-pki:1.2-zulu-openjdk8u242
       imagePullSecret: regcred
       pullPolicy: Always
     acceptLicense: YES
