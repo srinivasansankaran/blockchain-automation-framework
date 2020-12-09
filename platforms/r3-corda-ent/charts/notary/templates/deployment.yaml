@@ -217,7 +217,7 @@ spec:
         - |-
           # crearting cordapps dir in volume to keep jars
           {{- if .Values.cordapps.getcordapps }}
-          # Created cordapps directory using permission 'm755' to make any user access it
+          # Created cordapps directory using permission 'm755' to provide access to user
             mkdir -p -m775 ${BASE_DIR}/cordapps
             mkdir -p /tmp/downloaded-jars
             # setting up env to get secrets from vault
