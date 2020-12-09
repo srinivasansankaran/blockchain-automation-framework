@@ -13,10 +13,8 @@
     vars:
       kubeconfig_path: "{{ item.k8s.config_file }}"
       kubecontext: "{{ item.k8s.context }}"
-      git_url: "{{ item.gitops.git_https }}"
       git_username: "{{ item.gitops.username }}"
       git_password: "{{ item.gitops.password }}"
-      #git_key: "{{ item.gitops.private_key }}"
       git_repo: "{{ item.gitops.git_push_url }}"
       git_branch: "{{ item.gitops.branch }}"
       git_path: "{{ item.gitops.release_dir }}"
