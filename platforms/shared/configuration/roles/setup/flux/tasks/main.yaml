@@ -14,12 +14,6 @@
   tags:
     - flux
 
-- name: Get ssh known hosts
-  shell: |
-    ssh-keyscan {{ git_host }} > flux_known_hosts
-    chmod -R 777 flux_known_hosts
-  when: flux_service.resources|length == 0
-
 - name: Helm repo add
   shell: |
     helm repo add fluxcd https://charts.fluxcd.io
