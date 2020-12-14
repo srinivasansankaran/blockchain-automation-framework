@@ -1,0 +1,104 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: manufacturersr
+  namespace: manufacturersr-ent
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: manufacturersr
+  chart:
+    git: git@github.com:srinivasansankaran/blockchain-automation-framework.git
+    ref: develop
+    path: platforms/r3-corda-ent/charts/node
+  values:
+    nodeName: manufacturersr
+    metadata:
+      namespace: manufacturersr-ent
+      labels:
+    image:
+      initContainerName: adopblockchaincloud0502.azurecr.io/alpine-utils:1.0
+      nodeContainerName: adopblockchaincloud0502.azurecr.io/corda/enterprise-node:4.4
+      imagepullsecret: regcred
+      pullPolicy: Always
+    acceptLicence: true
+    storage:
+      name: cordaentsc
+    replicas: 1
+    networkServices:
+      doormanURL: https://idmansr.rc.dev2.aws.blockchaincloudpoc-develop.com:8443
+      networkMapURL: https://networkmapsr.rc.dev2.aws.blockchaincloudpoc-develop.com:8443
+      idmanDomain: "idmansr.rc.dev2.aws.blockchaincloudpoc-develop.com"
+      networkMapDomain: "networkmapsr.rc.dev2.aws.blockchaincloudpoc-develop.com"
+      idmanName: "idmansr"
+      networkmapName: "networkmapsr"
+    firewall:
+      enabled: False      
+    vault:
+      address: http://vault.internal.dev2.aws.blockchaincloudpoc-develop.com:20001
+      role: vault-role
+      authpath: cordaentmanufacturersr
+      serviceaccountname: vault-auth
+      certsecretprefix: secret/manufacturersr/manufacturersr
+      nodePath: manufacturersr
+      retries: 30
+      retryInterval: 30
+    cordapps:
+      getcordapps: false
+
+    nodeConf:
+      ambassador:
+        external_url_suffix: rc.dev2.aws.blockchaincloudpoc-develop.com
+        p2pPort: 15211
+        p2pAddress: manufacturersr.rc.dev2.aws.blockchaincloudpoc-develop.com:15211
+      legalName: "O=Manufacturer,OU=Manufacturer,L=Zurich,C=CH"
+      emailAddress: "dev-node@baf.com"
+      crlCheckSoftFail: true
+      tlsCertCrlDistPoint: ""
+      tlsCertCrlIssuer: "CN=Corda TLS CRL Authority,OU=Corda UAT,O=R3 HoldCo LLC,L=New York,C=US"
+      devMode: false
+      volume:
+        baseDir: /opt/corda/base
+      jarPath: bin
+      configPath: etc
+      cordaJar:
+        memorySize: 1524
+        unit: M
+      pod:
+        resources:
+          limits: 1524M
+          requests: 1524M
+    service:
+      p2pPort: 10002
+      p2pAddress: manufacturersr.manufacturersr-ent
+      messagingServerPort: 10002
+      ssh:
+        enabled: true
+        sshdPort: 2222
+      rpc:
+        port: 30000
+        adminPort: 30009
+        users:
+        - name: manufacturersr
+          password: manufacturersrP
+          permissions: ALL
+    dataSourceProperties:
+      dataSource:
+        user: manufacturersr-db-user
+        password: manufacturersr-db-password
+        url: "jdbc:h2:tcp://manufacturersrdb:9101/persistence;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=10000;WRITE_DELAY=100;AUTO_RECONNECT=TRUE;"
+        dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+        dbUrl: "manufacturersrdb"
+        dbPort: 9101
+      monitoring:
+        enabled: true
+        port: 8090
+      allowDevCorDapps:
+        enabled: true
+      retries: 20
+      retryInterval: 15
+    sleepTimeAfterError: 120
+    sleepTime: 0
+    healthcheck:
+      readinesscheckinterval: 10
+      readinessthreshold: 15
