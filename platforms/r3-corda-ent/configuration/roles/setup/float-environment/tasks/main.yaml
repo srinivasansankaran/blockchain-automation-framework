@@ -9,10 +9,10 @@
     kubecontext: "{{ item.k8s.context }}"
     git_username: "{{ item.gitops.username }}"
     git_password: "{{ item.gitops.password }}"
-    git_repo: "{{ item.gitops.git_push_url }}"
+    git_repo: "{{ item.gitops.git_https.split('//')[1] | lower }}"
     git_branch: "{{ item.gitops.branch }}"
     git_path: "{{ item.gitops.release_dir }}"
-    git_host: "{{ item.gitops.git_push_url.split('/')[0] | lower }}" # extract the hostname from the git_push_url
+    git_host: "{{ item.gitops.git_https.split('/')[2] | lower }}" # extract the hostname from the git_https
     helm_operator_version: "1.2.0"
 
 - name: Setup ambassador for float cluster

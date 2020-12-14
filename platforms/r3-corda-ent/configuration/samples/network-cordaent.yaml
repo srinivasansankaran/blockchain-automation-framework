@@ -83,7 +83,6 @@ network:
         branch: "develop"           # Git branch where release is being made
         release_dir: "platforms/r3-corda-ent/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
-        git_push_url: "github.com/<username>/blockchain-automation-framework.git"   # Gitops https URL for git push 
         username: "git_username"          # Git Service user who has rights to check-in in all branches
         password: "git_access_token"          # Git Server user password/access token
         email: "git_email"                # Email to use in git config
@@ -205,7 +204,6 @@ network:
         branch: "develop"           # Git branch where release is being made
         release_dir: "platforms/r3-corda-ent/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
-        git_push_url: "github.com/<username>/blockchain-automation-framework.git"   # Gitops https URL for git push 
         username: "git_username"          # Git Service user who has rights to check-in in all branches
         password: "git_access_token"          # Git Server user password/access token
         email: "git_email"                # Email to use in git config
@@ -243,7 +241,6 @@ network:
             branch: "develop"           # Git branch where release is being made
             release_dir: "platforms/r3-corda-ent/releases/float" # Relative Path in the Git repo for flux sync per environment. 
             chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
-            git_push_url: "github.com/<username>/blockchain-automation-framework.git"   # Gitops https URL for git push 
             username: "git_username"          # Git Service user who has rights to check-in in all branches
             password: "git_access_token"          # Git Server user password/access token
             email: "git_email"                # Email to use in git config
@@ -329,7 +326,6 @@ network:
         branch: "develop"           # Git branch where release is being made
         release_dir: "platforms/r3-corda-ent/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
-        git_push_url: "github.com/<username>/blockchain-automation-framework.git"   # Gitops https URL for git push 
         username: "git_username"          # Git Service user who has rights to check-in in all branches
         password: "git_access_token"          # Git Server user password/access token
         email: "git_email"                # Email to use in git config
@@ -366,7 +362,6 @@ network:
             branch: "develop"           # Git branch where release is being made
             release_dir: "platforms/r3-corda-ent/releases/float" # Relative Path in the Git repo for flux sync per environment. 
             chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
-            git_push_url: "github.com/<username>/blockchain-automation-framework.git"   # Gitops https URL for git push 
             username: "git_username"          # Git Service user who has rights to check-in in all branches
             password: "git_access_token"          # Git Server user password/access token
             email: "git_email"                # Email to use in git config
@@ -452,7 +447,6 @@ network:
         branch: "develop"           # Git branch where release is being made
         release_dir: "platforms/r3-corda-ent/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
-        git_push_url: "github.com/<username>/blockchain-automation-framework.git"   # Gitops https URL for git push 
         username: "git_username"          # Git Service user who has rights to check-in in all branches
         password: "git_access_token"          # Git Server user password/access token
         email: "git_email"                # Email to use in git config
@@ -489,7 +483,6 @@ network:
             branch: "develop"           # Git branch where release is being made
             release_dir: "platforms/r3-corda-ent/releases/float" # Relative Path in the Git repo for flux sync per environment. 
             chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
-            git_push_url: "github.com/<username>/blockchain-automation-framework.git"   # Gitops https URL for git push 
             username: "git_username"          # Git Service user who has rights to check-in in all branches
             password: "git_access_token"          # Git Server user password/access token
             email: "git_email"                # Email to use in git config
@@ -575,7 +568,6 @@ network:
         branch: "develop"           # Git branch where release is being made
         release_dir: "platforms/r3-corda-ent/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
-        git_push_url: "github.com/<username>/blockchain-automation-framework.git"   # Gitops https URL for git push 
         username: "git_username"          # Git Service user who has rights to check-in in all branches
         password: "git_access_token"          # Git Server user password/access token
         email: "git_email"                # Email to use in git config
@@ -612,7 +604,6 @@ network:
             branch: "develop"           # Git branch where release is being made
             release_dir: "platforms/r3-corda-ent/releases/float" # Relative Path in the Git repo for flux sync per environment. 
             chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
-            git_push_url: "github.com/<username>/blockchain-automation-framework.git"   # Gitops https URL for git push 
             username: "git_username"          # Git Service user who has rights to check-in in all branches
             password: "git_access_token"          # Git Server user password/access token
             email: "git_email"                # Email to use in git config
