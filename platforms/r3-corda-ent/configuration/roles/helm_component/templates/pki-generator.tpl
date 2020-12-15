@@ -8,7 +8,7 @@ metadata:
 spec:
   releaseName: {{ component_name }}
   chart:
-    git: {{ org.gitops.git_https }}
+    git: {{ org.gitops.git_url }}
     ref: {{ org.gitops.branch }}
     path: {{ charts_dir }}/generate-pki
   values:

@@ -79,7 +79,8 @@ network:
       # Git Repo details which will be used by GitOps/Flux.
       # Do not check-in git_access_token
       gitops:
-        git_https: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+        git_url: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+        ssh: false
         branch: "develop"           # Git branch where release is being made
         release_dir: "platforms/r3-corda-ent/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
@@ -200,7 +201,8 @@ network:
       # Git Repo details which will be used by GitOps/Flux.
       # Do not check-in git_access_token
       gitops:
-        git_https: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+        git_url: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+        ssh: false
         branch: "develop"           # Git branch where release is being made
         release_dir: "platforms/r3-corda-ent/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
@@ -237,7 +239,8 @@ network:
             url: "float_vault_addr"
             root_token: "float_vault_root_token"
           gitops:
-            git_https: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+            git_url: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+            ssh: false
             branch: "develop"           # Git branch where release is being made
             release_dir: "platforms/r3-corda-ent/releases/float" # Relative Path in the Git repo for flux sync per environment. 
             chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
@@ -322,7 +325,8 @@ network:
       # Git Repo details which will be used by GitOps/Flux.
       # Do not check-in git_access_token
       gitops:
-        git_https: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+        git_url: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+        ssh: false
         branch: "develop"           # Git branch where release is being made
         release_dir: "platforms/r3-corda-ent/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
@@ -358,7 +362,8 @@ network:
             url: "float_vault_addr"
             root_token: "float_vault_root_token"
           gitops:
-            git_https: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+            git_url: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+            ssh: false
             branch: "develop"           # Git branch where release is being made
             release_dir: "platforms/r3-corda-ent/releases/float" # Relative Path in the Git repo for flux sync per environment. 
             chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
@@ -443,7 +448,8 @@ network:
       # Git Repo details which will be used by GitOps/Flux.
       # Do not check-in git_access_token
       gitops:
-        git_https: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+        git_url: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+        ssh: false
         branch: "develop"           # Git branch where release is being made
         release_dir: "platforms/r3-corda-ent/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
@@ -479,7 +485,8 @@ network:
             url: "float_vault_addr"
             root_token: "float_vault_root_token"
           gitops:
-            git_https: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+            git_url: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+            ssh: false
             branch: "develop"           # Git branch where release is being made
             release_dir: "platforms/r3-corda-ent/releases/float" # Relative Path in the Git repo for flux sync per environment. 
             chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
@@ -564,7 +571,8 @@ network:
       # Git Repo details which will be used by GitOps/Flux.
       # Do not check-in git_access_token
       gitops:
-        git_https: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+        git_url: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+        ssh: false
         branch: "develop"           # Git branch where release is being made
         release_dir: "platforms/r3-corda-ent/releases/dev" # Relative Path in the Git repo for flux sync per environment. 
         chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
@@ -600,7 +608,8 @@ network:
             url: "float_vault_addr"
             root_token: "float_vault_root_token"
           gitops:
-            git_https: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+            git_url: "https://github.com/<username>/blockchain-automation-framework.git"         # Gitops https url for flux value files 
+            ssh: false
             branch: "develop"           # Git branch where release is being made
             release_dir: "platforms/r3-corda-ent/releases/float" # Relative Path in the Git repo for flux sync per environment. 
             chart_source: "platforms/r3-corda-ent/charts"     # Relative Path where the Helm charts are stored in Git repo
