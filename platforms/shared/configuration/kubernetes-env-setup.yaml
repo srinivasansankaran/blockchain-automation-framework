@@ -19,7 +19,7 @@
       git_branch: "{{ item.gitops.branch }}"
       git_path: "{{ item.gitops.release_dir }}"
       git_host: "{{ item.gitops.git_url.split('/')[2] | lower }}" # extract the hostname from the git_push_url
-      ssh: "{{ item.gitops.ssh }}"
+      ssh: "{{ item.gitops.ssh | default(false) }}"
       helm_operator_version: "1.2.0"
     with_items: "{{ network.organizations }}"
   - name: Prepare nodes and clients ports for ambassador
